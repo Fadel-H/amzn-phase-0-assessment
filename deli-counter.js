@@ -29,6 +29,23 @@ function line(array){
   }
 
  
+function removeNumber(array,string){ //removes an order Number and created a new wait line when given a name that is already in the array.
+        let newLineString = ""
+        let compareArray= [...array]
+        for(i=0;i<array.length;i++){
+          if(array[i] === string){
+           array.splice(i,1)
+          }
+        }
+        if (JSON.stringify(compareArray) !== JSON.stringify(array)){
+        newLineString = "The new line is currently: "
+        for (i=1; i<array.length+1;i++){
+              newLineString += `${i}. ${array[i-1]} `
+         } console.log(newLineString.substring(0,newLineString.length-1)) 
+          return
+      } console.log("Person isn't in line")
+      }
+ 
 
 // 2. Example Usage
 
@@ -51,3 +68,11 @@ function line(array){
  nowServing(katzDeli) //=> "Currently serving Grace."
 
  line(katzDeli) //=> "The line is currently: 1. Kent 2. Matz"
+
+ takeANumber(katzDeli, "Bob") //=> Welcome, Bob. You are number 3 in line.
+
+ line(katzDeli) //=> The line is currently: 1. Kent 2. Matz 3. Bob
+
+ removeNumber(katzDeli,"atz") //=> Person isn't in line
+
+ removeNumber(katzDeli,"Matz") //=> The new line is currently: 1. Kent 2. Bob
